@@ -410,7 +410,7 @@ class Localization implements LocalizationContract
         foreach ($this->routeTranslator->getTranslatedRoutes() as $translatedRoute) {
             $translatedUrl = $this->getUrlFromRouteName($locale, $translatedRoute, $attributes);
 
-            if ($this->getNonLocalizedURL($translatedUrl) === $this->getNonLocalizedURL($url))
+            if ($this->getNonLocalizedURL($translatedUrl) === urldecode($this->getNonLocalizedURL($url))) //support japanese character
                 return $translatedRoute;
         }
 
